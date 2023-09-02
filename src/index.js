@@ -74,11 +74,17 @@ function Menu() {
       <h2>Our menu</h2>
 
       {isValid ? (
-        <ul className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cousine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicious :)
+          </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're still working on our menu, Please come back later :)</p>
       )}
@@ -147,7 +153,9 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOpen ? (<Order openHour={openHour} closeHour={closeHour} />) : (
+      {isOpen ? (
+        <Order openHour={openHour} closeHour={closeHour} />
+      ) : (
         <p>
           OOPS! we're closed now :/, please come visit us between 12:00 and
           22:00 :)
@@ -161,13 +169,13 @@ const Order = ({ openHour, closeHour }) => {
   return (
     <div className="order">
       <p>
-        Yay! We're currently open :), we're happy to serve you b/w{" "}
-        {openHour}:00 and {closeHour}:00
+        Yay! We're currently open :), we're happy to serve you b/w {openHour}:00
+        and {closeHour}:00
       </p>
       <button className="btn">order now</button>
     </div>
-  )
-}
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
